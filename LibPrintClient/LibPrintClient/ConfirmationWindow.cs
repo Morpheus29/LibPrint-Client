@@ -17,6 +17,15 @@ namespace LibPrintClient
             InitializeComponent();
 
             label2.Text = Variables.parsedconfirm[3].Trim();
+
+            button1.Click += new EventHandler(this.SelectOK);
+        }
+
+        void SelectOK(Object sender, EventArgs e)
+        {
+            //Clear cache folder
+
+            Application.Exit();
         }
     }
 }

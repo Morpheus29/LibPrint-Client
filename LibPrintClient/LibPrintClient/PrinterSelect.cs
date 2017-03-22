@@ -48,19 +48,25 @@ namespace LibPrintClient
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             webClient.QueryString.Add("computer", Environment.MachineName);
             webClient.QueryString.Add("printerName", Variables.printername);
-            webClient.QueryString.Add("file", "C:/ProgramData/LibPrint/cache/LibPrintPrototypeScreenshots.pdf");
+            webClient.QueryString.Add("file", /*get file from cache folder*/);
             string result = webClient.DownloadString(Variables.libprinturl);
             Variables.parsedconfirm = result.Split(new[] { ':', '\n' });
+
             if(Variables.parsedconfirm[1].Trim() == "Ok")
             {
                 ConfirmationWindow f = new ConfirmationWindow();
+                f.Show();
+            }
+            else if(Variables.parsedconfirm[1].Trim() == "Error")
+            {
+                PrintError f = new PrintError();
                 f.Show();
             }
         }
 
         void SelectCancel(Object sender, EventArgs e)
         {
-            ActiveForm.Close();
+            Application.Exit();
         }
 
         private void PrinterSelect_Load(object sender, EventArgs e)

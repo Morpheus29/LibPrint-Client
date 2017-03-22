@@ -23,9 +23,12 @@ namespace LibPrintClient
             webClient.QueryString.Add("request", "getInformation");
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             webClient.QueryString.Add("computer", Environment.MachineName);
-            webClient.QueryString.Add("secToken", "");
+            webClient.QueryString.Add("secToken", "temp");
             string result = webClient.DownloadString(Variables.libprinturl);
             Variables.parsed = result.Split(new[] { ':', '\n'});
+
+            //check contents of cache folder
+
             if (Variables.parsed[1].Trim() == "OK")
             {
                 Application.Run(new PrinterSelect());
