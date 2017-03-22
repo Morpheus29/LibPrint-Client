@@ -15,6 +15,8 @@ namespace LibPrintClient
         public ConfirmationWindow()
         {
             InitializeComponent();
+
+            label2.Text = Variables.parsedconfirm[3].Trim();
         }
     }
 }

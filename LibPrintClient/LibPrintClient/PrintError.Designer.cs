@@ -34,16 +34,16 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 19);
+            this.label1.Location = new System.Drawing.Point(50, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 13);
+            this.label1.Size = new System.Drawing.Size(228, 54);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Print error: No response from server";
+            this.label1.Text = "Print error: Message";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(127, 51);
+            this.button1.Location = new System.Drawing.Point(127, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -55,13 +55,12 @@
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 86);
+            this.ClientSize = new System.Drawing.Size(334, 115);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "PrintError";
             this.Text = "PrintError";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

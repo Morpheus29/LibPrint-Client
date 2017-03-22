@@ -24,19 +24,38 @@ namespace LibPrintClient
 
             button1.Click += new EventHandler(this.SelectOK);
             button2.Click += new EventHandler(this.SelectCancel);
+
+            if(Variables.parsed.Length == 4)
+            {
+                radioButton2.Hide();
+                label2.Hide();
+            }
         }
 
         void SelectOK(Object sender, EventArgs e)
         {
+            if(radioButton1.Checked == true)
+            {
+                Variables.printername = Variables.parsed[3].Split(',')[0].Trim();
+            }
+            else if(radioButton2.Checked == true)
+            {
+                Variables.printername = Variables.parsed[5].Split(',')[0].Trim();
+            }
+
             WebClient webClient = new WebClient();
             webClient.QueryString.Add("request", "printPDF");
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             webClient.QueryString.Add("computer", Environment.MachineName);
-            webClient.QueryString.Add("printerName", "color"); //Remember to find out how to choose printer name
-            webClient.QueryString.Add("file", "<FileName>"); //Remember to ask about where <FileName> comes from
+            webClient.QueryString.Add("printerName", Variables.printername);
+            webClient.QueryString.Add("file", "C:/ProgramData/LibPrint/cache/LibPrintPrototypeScreenshots.pdf");
             string result = webClient.DownloadString(Variables.libprinturl);
-            //ConfirmationWindow f = new ConfirmationWindow();
-            //f.Show();
+            Variables.parsedconfirm = result.Split(new[] { ':', '\n' });
+            if(Variables.parsedconfirm[1].Trim() == "Ok")
+            {
+                ConfirmationWindow f = new ConfirmationWindow();
+                f.Show();
+            }
         }
 
         void SelectCancel(Object sender, EventArgs e)

@@ -15,6 +15,15 @@ namespace LibPrintClient
         public PrintError()
         {
             InitializeComponent();
+
+            label1.Text = "Print error: " + Variables.parsed[3].Trim();
+
+            button1.Click += new EventHandler(this.SelectOK);
+        }
+
+        void SelectOK(Object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

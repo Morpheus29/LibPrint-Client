@@ -23,7 +23,7 @@ namespace LibPrintClient
             webClient.QueryString.Add("request", "getInformation");
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             webClient.QueryString.Add("computer", Environment.MachineName);
-            webClient.QueryString.Add("secToken", "temp");
+            webClient.QueryString.Add("secToken", "");
             string result = webClient.DownloadString(Variables.libprinturl);
             Variables.parsed = result.Split(new[] { ':', '\n'});
             if (Variables.parsed[1].Trim() == "OK")
@@ -31,7 +31,7 @@ namespace LibPrintClient
                 Application.Run(new PrinterSelect());
             }
 
-            else
+            else if(Variables.parsed[1].Trim() == "Error")
             {
                 Application.Run(new PrintError());
             }
