@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.IO;
 
 namespace LibPrintClient
 {
@@ -48,19 +49,28 @@ namespace LibPrintClient
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             webClient.QueryString.Add("computer", Environment.MachineName);
             webClient.QueryString.Add("printerName", Variables.printername);
-            webClient.QueryString.Add("file", /*get file from cache folder*/);
+            webClient.QueryString.Add("file", Directory.GetFiles(@"c:/ProgramData/LibPrint/cache/")[0]);
             string result = webClient.DownloadString(Variables.libprinturl);
+
             Variables.parsedconfirm = result.Split(new[] { ':', '\n' });
 
-            if(Variables.parsedconfirm[1].Trim() == "Ok")
+            if(Variables.parsedconfirm[1].Trim() == "OK")
             {
-                ConfirmationWindow f = new ConfirmationWindow();
-                f.Show();
+                ConfirmationWindow frm = new ConfirmationWindow();
+                frm.Show();
             }
             else if(Variables.parsedconfirm[1].Trim() == "Error")
             {
-                PrintError f = new PrintError();
-                f.Show();
+                PrintError frm = new PrintError();
+                frm.Show();
+            }
+            else
+            {
+                string error = "Response: Error\nError: Invalid response from server";
+                Variables.parsed = error.Split(new[] { ':', '\n' });
+
+                PrintError frm = new PrintError();
+                frm.Show();
             }
         }
 

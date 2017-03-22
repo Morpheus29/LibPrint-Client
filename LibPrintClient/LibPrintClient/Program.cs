@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.IO;
 
 
 
@@ -19,6 +20,17 @@ namespace LibPrintClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //check contents of cache folder
+            if (Directory.GetFiles(@"c:\ProgramData\LibPrint\cache\").Length == 0)
+            {
+                string error = "Response: Error\nError: No document cached for printing";
+                Variables.parsed = error.Split(new[] { ':', '\n' });
+
+                Application.Run(new PrintError());
+            }
+
+            //Make getInformation request
             WebClient webClient = new WebClient();
             webClient.QueryString.Add("request", "getInformation");
             webClient.QueryString.Add("username", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
@@ -26,8 +38,6 @@ namespace LibPrintClient
             webClient.QueryString.Add("secToken", "temp");
             string result = webClient.DownloadString(Variables.libprinturl);
             Variables.parsed = result.Split(new[] { ':', '\n'});
-
-            //check contents of cache folder
 
             if (Variables.parsed[1].Trim() == "OK")
             {
