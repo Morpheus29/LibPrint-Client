@@ -16,7 +16,7 @@ namespace LibPrintClient
         {
             InitializeComponent();
 
-            label2.Text = Variables.parsedconfirm[3].Trim();
+            label2.Text = Variables.parsed[3].Trim();
 
             button1.Click += new EventHandler(this.SelectOK);
         }
