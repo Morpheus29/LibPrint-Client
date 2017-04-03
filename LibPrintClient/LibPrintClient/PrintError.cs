@@ -26,7 +26,7 @@ namespace LibPrintClient
         {
             if(Directory.GetFiles(@"c:\ProgramData\LibPrint\cache\").Length != 0)
             {
-                File.Delete(Variables.cacheFile);
+                File.Delete(Variables.cacheFile());
             }
             Application.Exit();
         }

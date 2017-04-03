@@ -24,7 +24,7 @@ namespace LibPrintClient
 
         void SelectOK(Object sender, EventArgs e)
         {
-            File.Delete(Variables.cacheFile);
+            File.Delete(Variables.cacheFile());
 
             Application.Exit();
         }

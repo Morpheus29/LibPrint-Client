@@ -44,7 +44,7 @@ namespace LibPrintClient
                 Variables.printerName = Variables.parsed[5].Split(',')[0].Trim();
             }
 
-            byte[] fileByteArray = File.ReadAllBytes(Variables.cacheFile);
+            byte[] fileByteArray = File.ReadAllBytes(Variables.cacheFile());
 
             HttpClient httpClient = new HttpClient();
             MultipartFormDataContent form = new MultipartFormDataContent();
@@ -54,7 +54,7 @@ namespace LibPrintClient
             form.Add(new StringContent(Variables.computer), "computer");
             form.Add(new StringContent(Variables.printerName), "printerName");
             form.Add(new StringContent(Variables.GenerateSecToken("temp", Variables.username, Variables.computer)), "secToken");
-            form.Add(new ByteArrayContent(fileByteArray, 0, fileByteArray.Count()), "file", Variables.cacheFile);
+            form.Add(new ByteArrayContent(fileByteArray, 0, fileByteArray.Count()), "file", Variables.cacheFile());
             HttpResponseMessage response = await httpClient.PostAsync(Variables.libprinturl, form);
 
             response.EnsureSuccessStatusCode();
@@ -88,7 +88,7 @@ namespace LibPrintClient
 
         void SelectCancel(Object sender, EventArgs e)
         {
-            File.Delete(Variables.cacheFile);
+            File.Delete(Variables.cacheFile());
             Application.Exit();
         }
 

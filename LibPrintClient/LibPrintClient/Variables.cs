@@ -15,8 +15,14 @@ namespace LibPrintClient
         public static string[] parsed;
         public static string libprinturl = "http://chandler.io/LibPrint/RequestHandler";
         public static string printerName;
-        public static string cacheFile = Directory.GetFiles(@"c:\ProgramData\LibPrint\cache\")[0];
         public static string domainCode = System.IO.File.ReadAllText(@"C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\DomainCodeConfig.ini").Split('=')[1].Trim();
+
+        public static string cacheFile()
+        {
+            string cacheFile = Directory.GetFiles(@"c:\ProgramData\LibPrint\cache\")[0];
+
+            return cacheFile;
+        }
 
         public static string GenerateSecToken(string domainCode, string username, string computer)
         {
