@@ -28,5 +28,10 @@ namespace LibPrintClient
 
             Application.Exit();
         }
+
+        private void ConfirmationWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

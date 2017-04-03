@@ -8,3 +8,4 @@ C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\obj\R
 C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\obj\Release\LibPrintClient.csproj.GenerateResource.Cache
 C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\obj\Release\LibPrintClient.exe
 C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\obj\Release\LibPrintClient.pdb
+C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\obj\Release\LibPrintClient.csprojResolveAssemblyReference.cache

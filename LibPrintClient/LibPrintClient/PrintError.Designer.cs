@@ -58,7 +58,9 @@
             this.ClientSize = new System.Drawing.Size(334, 115);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PrintError";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PrintError";
             this.ResumeLayout(false);
 

@@ -108,7 +108,9 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PrinterSelect";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Printer";
             this.Load += new System.EventHandler(this.PrinterSelect_Load);
             this.ResumeLayout(false);

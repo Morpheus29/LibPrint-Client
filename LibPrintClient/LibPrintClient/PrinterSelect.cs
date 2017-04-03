@@ -18,19 +18,34 @@ namespace LibPrintClient
         {
             InitializeComponent();
 
-            radioButton1.Text = Variables.parsed[3].Split(',')[0].Trim();
-            radioButton2.Text = Variables.parsed[5].Split(',')[0].Trim();
-            label1.Text = Variables.parsed[3].Split(',')[1].Trim();
-            label2.Text = Variables.parsed[5].Split(',')[1].Trim();
+            button1.Enabled = false;
 
+            radioButton1.Text = Variables.parsed[3].Split(',')[0].Trim();
+            label1.Text = Variables.parsed[3].Split(',')[1].Trim();
+
+            Console.WriteLine(Variables.parsed.Length);
+
+            if(Variables.parsed.Length == 7)
+            {
+                radioButton2.Text = Variables.parsed[5].Split(',')[0].Trim();
+                label2.Text = Variables.parsed[5].Split(',')[1].Trim();
+            }
+            else
+            {
+                radioButton2.Text = "Printer Unavailable";
+                label2.Text = "N/A";
+            }
+
+            radioButton1.Click += new EventHandler(this.Choose);
+            radioButton2.Click += new EventHandler(this.Choose);
             button1.Click += new EventHandler(this.SelectOK);
             button2.Click += new EventHandler(this.SelectCancel);
+        }
 
-            if(Variables.parsed.Length == 4)
-            {
-                radioButton2.Hide();
-                label2.Hide();
-            }
+        void Choose(Object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+            return;
         }
 
         async void SelectOK(Object sender, EventArgs e)
