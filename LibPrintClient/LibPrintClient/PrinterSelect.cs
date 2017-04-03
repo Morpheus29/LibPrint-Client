@@ -34,6 +34,8 @@ namespace LibPrintClient
             {
                 radioButton2.Text = "Printer Unavailable";
                 label2.Text = "N/A";
+                radioButton2.Enabled = false;
+                label2.Enabled = false;
             }
 
             radioButton1.Click += new EventHandler(this.Choose);
