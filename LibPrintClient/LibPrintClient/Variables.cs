@@ -13,9 +13,9 @@ namespace LibPrintClient
         public static string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
         public static string computer = Environment.MachineName;
         public static string[] parsed;
-        public static string libprinturl = "http://chandler.io/LibPrint/RequestHandler";
+        public static string libprinturl = System.IO.File.ReadAllText(@"C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\DomainCodeConfig.ini").Split(new[] { '=', '\n' })[3].Trim();
         public static string printerName;
-        public static string domainCode = System.IO.File.ReadAllText(@"C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\DomainCodeConfig.ini").Split('=')[1].Trim();
+        public static string domainCode = System.IO.File.ReadAllText(@"C:\Users\Robert\Source\Repos\LibPrint-Client\LibPrintClient\LibPrintClient\DomainCodeConfig.ini").Split(new[] { '=', '\n' })[1].Trim();
 
         public static string cacheFile()
         {
